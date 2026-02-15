@@ -98,7 +98,7 @@ this is the complaint viewing page,the citizen can know the status of the compla
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e4e18aff-b250-4cb2-aa41-318e34b1ae51" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cb4395e5-1470-43e4-913a-ccb1c916b0fb" />
 this is the admin login page and admin controls,admin should login into the platform, and can manage the complaints according to the 'handling' of the complaints;
-progress of the complaint registerd can be managed by the admin
+progress of the complaint registerd can be managed by the admin (user name:admin ,password:admin123)
 
 In short we have:
 – Citizen complaint submission screen
