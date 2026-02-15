@@ -9,7 +9,7 @@ Krishna P:LBSITW
 Navya J:LBSITW
 
 Hosted Project Link:
-[[Flutter Web App URL or APK link]](https://grievance-frontend-theta.vercel.app/)
+(https://grievance-frontend-theta.vercel.app/)
 
 Project Description
 
