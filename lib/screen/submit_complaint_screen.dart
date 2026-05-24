@@ -45,53 +45,88 @@ class _SubmitComplaintScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Submit Complaint")),
-
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-
-            _field("Title", title),
-            const SizedBox(height: 14),
-
-            _field("Description", desc),
-            const SizedBox(height: 14),
-
-            DropdownButtonFormField(
-              initialValue: category,
-              decoration: _decoration("Category"),
-              items: ["Road", "Garbage", "Water", "Electricity"]
-                  .map((e) =>
-                      DropdownMenuItem(value: e, child: Text(e)))
-                  .toList(),
-              onChanged: (v) => setState(() => category = v!),
-            ),
-
-            const SizedBox(height: 14),
-            _field("Location", location),
-
-            const SizedBox(height: 30),
-
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: loading ? null : submit,
-                child: loading
-                    ? const CircularProgressIndicator(
-                        color: Color.fromARGB(255, 0, 0, 0))
-                    : const Text("Submit Complaint"),
+      appBar: AppBar(title: const Text("Submit Complaint", style: TextStyle(fontWeight: FontWeight.w600, letterSpacing: 0.5))),
+      body: Container(
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF0F172A), Color(0xFF1E1B4B)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          )
+        ),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            children: [
+              _field("Title", title),
+              const SizedBox(height: 16),
+              _field("Description", desc, maxLines: 4),
+              const SizedBox(height: 16),
+              DropdownButtonFormField(
+                initialValue: category,
+                dropdownColor: const Color(0xFF1E1B4B),
+                style: const TextStyle(color: Colors.white, fontSize: 16),
+                decoration: _decoration("Category"),
+                items: ["Road", "Garbage", "Water", "Electricity"]
+                    .map((e) => DropdownMenuItem(value: e, child: Text(e, style: const TextStyle(color: Colors.white))))
+                    .toList(),
+                onChanged: (v) => setState(() => category = v.toString()),
               ),
-            )
-          ],
+              const SizedBox(height: 16),
+              _field("Location", location),
+              const SizedBox(height: 40),
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF4F46E5), Color(0xFF6366F1)],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF4F46E5).withOpacity(0.4),
+                      blurRadius: 15,
+                      offset: const Offset(0, 5),
+                    )
+                  ],
+                ),
+                child: ElevatedButton(
+                  onPressed: loading ? null : submit,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                  child: loading
+                      ? const SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2.5),
+                        )
+                      : const Text(
+                          "Submit Complaint",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: 1),
+                        ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _field(String label, TextEditingController controller) {
+  Widget _field(String label, TextEditingController controller, {int maxLines = 1}) {
     return TextField(
       controller: controller,
+      maxLines: maxLines,
+      style: const TextStyle(color: Colors.white, fontSize: 16),
       decoration: _decoration(label),
     );
   }
@@ -99,12 +134,22 @@ class _SubmitComplaintScreenState
   InputDecoration _decoration(String label) {
     return InputDecoration(
       labelText: label,
+      labelStyle: TextStyle(color: Colors.white.withOpacity(0.6)),
       filled: true,
-      fillColor: const Color.fromARGB(255, 239, 227, 227),
+      fillColor: Colors.white.withOpacity(0.05),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
-        borderSide: BorderSide.none,
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: Colors.white.withOpacity(0.1), width: 1.5),
       ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: Colors.white.withOpacity(0.1), width: 1.5),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Color(0xFF4F46E5), width: 2),
+      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
     );
   }
 }

@@ -14,16 +14,25 @@ class MyApp extends StatelessWidget {
       title: "Grievance System",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: const Color.fromARGB(255, 222, 255, 104),
-        scaffoldBackgroundColor: const Color(0xFFF5F7FB),
-        fontFamily: "Times New Roman",
+        brightness: Brightness.dark,
+        fontFamily: 'Roboto',
+        primaryColor: const Color(0xFF4F46E5),
+        scaffoldBackgroundColor: const Color(0xFF0F172A),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.white,
+          elevation: 0,
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromRGBO(145, 99, 239, 1),
-            padding: const EdgeInsets.symmetric(vertical: 14),
+            backgroundColor: const Color(0xFF4F46E5),
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 16),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(50),
             ),
+            elevation: 8,
+            shadowColor: const Color(0xFF4F46E5).withOpacity(0.5)
           ),
         ),
       ),
